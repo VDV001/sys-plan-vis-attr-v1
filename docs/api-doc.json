@@ -1,0 +1,169 @@
+{
+	"info": {
+		"name": "Документация",
+		"description": "Документация по системе ведения заявок",
+	},
+	"item": [
+		{
+			"name": "/applications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/applications?search&column&sort",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"applications"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": null,
+							"description": "Содержание поискового запроса пользователя"
+						},
+						{
+							"key": "column",
+							"value": null,
+							"description": "Колонка таблицы (поле заявки), по которой будет осуществлен поиск. Если параметр или значение параметра отсутствуют, поиск производится по всей заявке"
+						},
+						{
+							"key": "sort",
+							"value": null,
+							"description": "Поле заявки, по которому будет выполнена сортировка"
+						}
+					]
+				},
+				"description": "Даннный GET-запрос используется для получение списка заявок. Дополнительно могут быть использованы ссылочные параметры \"search\" и \"sort\".\n\nВозвращает массив заявок."
+			},
+			"response": []
+		},
+		{
+			"name": "/applications",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"applicationUID\": \"we47-qw52\",\r\n    \"date\": \"1713724061348\",\r\n    \"companyName\": \"Yeti & CO. D\",\r\n    \"driverName\": \"Олег\",\r\n    \"driverPhone\": \"89199004556\",\r\n    \"comment\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\",\r\n    \"status\": 1,\r\n    \"ATI\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/applications/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"applications",
+						"1"
+					]
+				},
+				"description": "Даннный POST-запрос используется для создания новой заявки.\n\nВозвращает созданную заявку."
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"applicationUID\": \"we47-qw52\",\r\n    \"date\": \"1713724061348\",\r\n    \"companyName\": \"Yeti & CO. D\",\r\n    \"driverName\": \"Олег2\",\r\n    \"driverPhone\": \"89199004556\",\r\n    \"comment\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\",\r\n    \"status\": 1,\r\n    \"ATI\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/applications/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"applications",
+						"1"
+					]
+				},
+				"description": "Данный PATCH-запрос используется для изменения существующей заявки по ID.\n\nВозвращает измененную заявку."
+			},
+			"response": []
+		},
+		{
+			"name": "/applications/id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/applications/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"applications",
+						"2"
+					]
+				},
+				"description": "Данный DELETE-запрос используется для удаления заявки по ID.\n\nВозвращает удаленную заявку."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
